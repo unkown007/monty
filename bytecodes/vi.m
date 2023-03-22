@@ -1,2 +1,2 @@
        push 2
-       pus
+	#pall

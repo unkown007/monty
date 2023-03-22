@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 		if (fgets(buffer, sizeof(buffer), fp) == NULL)
 			break;
 		opcode = strtok(buffer, " \n\t\r");
-		if (opcode == NULL)
+		if (opcode == NULL || *opcode == '#')
 			continue;
 		if (strcmp(instr[0].opcode, opcode) == 0)
 		{
