@@ -47,6 +47,8 @@ int main(int argc, char *argv[])
 			if (integer == NULL || !isint(integer))
 			{
 				fprintf(stderr, "L%d: usage: push integer\n", line);
+				fclose(fp);
+				free_stack_int(stack);
 				exit(EXIT_FAILURE);
 			}
 			instr[0].f(&stack, atoi(integer));
@@ -58,6 +60,8 @@ int main(int argc, char *argv[])
 		else
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line, opcode);
+			fclose(fp);
+			free_stack_int(stack);
 			exit(EXIT_FAILURE);
 		}
 		line++;
