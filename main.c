@@ -38,7 +38,7 @@ void handle_command(char *argv)
 		{
 			memset(line, 0, sizeof(line));
 			if (fgets(line, sizeof(line), fp) == NULL)
-				exit(EXIT_FAILURE);
+				break;
 			line_number++;
 			arg = strtok(line, " \n\t\r");
 			if (arg == NULL)
