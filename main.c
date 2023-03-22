@@ -38,12 +38,12 @@ int main(int argc, char *argv[])
 		memset(buffer, 0, sizeof(buffer));
 		if (fgets(buffer, sizeof(buffer), fp) == NULL)
 			break;
-		opcode = strtok(buffer, " \n");
+		opcode = strtok(buffer, " \n\t\r");
 		if (opcode == NULL)
 			continue;
 		if (strcmp(instr[0].opcode, opcode) == 0)
 		{
-			integer = strtok(NULL, " \n");
+			integer = strtok(NULL, " \n\t\r");
 			if (integer == NULL || !isint(integer))
 			{
 				fprintf(stderr, "L%d: usage: push integer\n", line);
