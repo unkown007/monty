@@ -47,4 +47,7 @@ int isint(char *str);
 void handle_command(char *argv);
 int get_opc(stack_t **stack, char *arg, char *item, int line);
 
+void push_error(FILE *fp, stack_t *stack, int line_number);
+void ins_error(FILE *fp, stack_t *stack, char *opcode, int line_number);
+
 #endif

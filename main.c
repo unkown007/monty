@@ -37,38 +37,20 @@ void handle_command(char *argv)
 		while (!feof(fp))
 		{
 			memset(line, 0, sizeof(line));
-
-			if(fgets(line, sizeof(line), fp) == NULL)
+			if (fgets(line, sizeof(line), fp) == NULL)
 				exit(EXIT_FAILURE);
 			line_number++;
 			arg = strtok(line, " \n\t\r");
 			if (arg == NULL)
-			{
-				free(arg);
 				continue;
-			}
 			else if (*arg == '#')
 				continue;
 			item = strtok(NULL, " \n\t\r");
 			res = get_opc(&stack, arg, item, line_number);
 			if (res == 1)
-			{
-				fprintf(stderr,
-					"L%u: usage: push integer\n",
-					line_number);
-				fclose(fp);
-				free_stack_int(stack);
-				exit(EXIT_FAILURE);
-			}
+				push_error(fp, stack, line_number);
 			else if (res == 2)
-			{
-				fprintf(stderr,
-					"L%u: unknown instruction %s\n",
-					line_number, arg);
-				fclose(fp);
-				free_stack_int(stack);
-				exit(EXIT_FAILURE);
-			}
+				ins_error(fp, stack, arg, line_number);
 		}
 		free_stack_int(stack);
 		fclose(fp);
@@ -85,6 +67,7 @@ void handle_command(char *argv)
  * @stack: pointer to the top of the stack
  * @arg: command parameter
  * @item: parameter
+ * @line: line number
  *
  * Return: number
  */
@@ -97,7 +80,7 @@ int get_opc(stack_t **stack, char *arg, char *item, int line)
 		{"pall", pall},
 		{NULL, NULL},
 	};
-	
+
 	while (instr[i].opcode)
 	{
 		if (!strcmp(arg, instr[i].opcode))
