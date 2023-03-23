@@ -6,7 +6,7 @@
  * @stack: pointer to the top of the stack
  * @line_number: line number in the file
  */
-void div(stack_t **stack, unsigned int line_number)
+void _div(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
