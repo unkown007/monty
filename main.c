@@ -76,20 +76,14 @@ int get_opc(stack_t **stack, char *arg, char *item, int line)
 	int i = 0;
 
 	instruction_t instr[] = {
-		{"push", push},
-		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{"nop", nop},
-		{"sub", sub},
-		{"div", _div},
-		{"mul", mul},
-		{"mod", mod},
-		{"pchar", pchar},
-		{"pstr", pstr},
-		{"rotl", rotl},
+		{"push", push}, {"pall", pall},
+		{"pint", pint}, {"pop", pop},
+		{"swap", swap}, {"add", add},
+		{"nop", nop}, {"sub", sub},
+		{"div", _div}, {"mul", mul},
+		{"mod", mod}, {"pchar", pchar},
+		{"pstr", pstr}, {"rotl", rotl},
+		{"rotr", rotr},
 		{NULL, NULL},
 	};
 
