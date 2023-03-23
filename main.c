@@ -34,6 +34,7 @@ void handle_command(char *argv)
 	fp = fopen(argv, "r");
 	if (fp)
 	{
+		_stack(&stack, line_number);
 		while (!feof(fp))
 		{
 			memset(line, 0, sizeof(line));
@@ -83,7 +84,8 @@ int get_opc(stack_t **stack, char *arg, char *item, int line)
 		{"div", _div}, {"mul", mul},
 		{"mod", mod}, {"pchar", pchar},
 		{"pstr", pstr}, {"rotl", rotl},
-		{"rotr", rotr},
+		{"rotr", rotr}, {"stack", _stack},
+		{"queue", _queue},
 		{NULL, NULL},
 	};
 

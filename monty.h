@@ -38,6 +38,7 @@ typedef struct instruction_s
 } instruction_t;
 
 extern int value;
+extern int stack_flag;
 
 void push(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
@@ -54,6 +55,8 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
+void _stack(stack_t **stack, unsigned int line_number);
+void _queue(stack_t **stack, unsigned int line_number);
 
 void free_stack_int(stack_t *stack);
 int isint(char *str);
